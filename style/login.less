@@ -1,0 +1,69 @@
+/**
+ * Created with Less.
+ * User: Ushow Jack/youshoujie@tomee.cn
+ * Date: 2017/4/12
+ * Time: 9:38
+ */
+@import "normalize";
+@import "container";
+@import "login/loginComponent";
+@import "variable";
+
+html,
+body{
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(90deg, #429cfe, #64b4fd);
+  background: #469ffe@ie8;
+}
+
+.container{
+  background: url("../image/loginTitle.png") no-repeat 10% 10%;
+}
+img{
+  position: absolute;
+  top: 25%;
+  width: 40%;
+  min-width: 540px;
+  height: auto;
+}
+.login-component{
+  width: @login-component-width;
+  height: @login-component-height;
+  position: absolute;
+  top: 30%;
+  left: 60%;
+  box-shadow: 0 3px 20px #222;
+  .login-head{
+    color: #fff;
+    background: #353b49;
+  }
+  form {
+    background: #f2f7fd;
+    #login{
+      background: #64b4fd;
+      color: #fff;
+    }
+    .items-list{
+      background: #fff;
+    }
+    .input-item:nth-child(1){
+      //background: url(../image/login.png) no-repeat 10px center;
+    }
+    .input-item:nth-child(2){
+      //background: url(../image/login.png) no-repeat 11px -73px;
+    }
+    .input-item:nth-child(3){
+      //background: url(../image/login.png) no-repeat 10px center;
+    }
+  }
+}
+.logo{
+  width: 339px * 2 / 3;
+  height: 18px * 2 / 3;
+  background: url("../image/tomeeLogo.png") no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 90%;
+  left: 70%;
+}

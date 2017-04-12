@@ -1,0 +1,48 @@
+#gopng_验证-验证码_outer {
+height: 27px;
+width: 25px;
+overflow: hidden;
+}
+#gopng_验证-验证码 {
+background: url(http://gopng/static/images/sprite.png) -0px -0px no-repeat;
+width: 100%;
+height: 100%;
+_background: none;
+_padding-left: 0px;
+_margin-left: -0px;
+_padding-top: 0px;
+_margin-top: -0px;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=crop,src="http://gopng/static/images/sprite.png");
+}
+#gopng_用户名_outer {
+height: 26px;
+width: 26px;
+overflow: hidden;
+}
+#gopng_用户名 {
+background: url(http://gopng/static/images/sprite.png) -0px -40px no-repeat;
+width: 100%;
+height: 100%;
+_background: none;
+_padding-left: 0px;
+_margin-left: -0px;
+_padding-top: 40px;
+_margin-top: -40px;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=crop,src="http://gopng/static/images/sprite.png");
+}
+#gopng_密码_outer {
+height: 25px;
+width: 22px;
+overflow: hidden;
+}
+#gopng_密码 {
+background: url(http://gopng/static/images/sprite.png) -0px -79px no-repeat;
+width: 100%;
+height: 100%;
+_background: none;
+_padding-left: 0px;
+_margin-left: -0px;
+_padding-top: 79px;
+_margin-top: -79px;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=crop,src="http://gopng/static/images/sprite.png");
+}

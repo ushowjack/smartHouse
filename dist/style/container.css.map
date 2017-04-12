@@ -1,0 +1,1 @@
+{"version":3,"sources":["container.css"],"names":[],"mappings":"AAAA,WACE,SAAA,SACA,MAAA,KACA,OAAA,KACA,UAAA","file":"container.css","sourcesContent":[".container {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-width: 1000px;\n}\n"]}

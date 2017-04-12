@@ -85,10 +85,10 @@ gulp.task("cssMin", function () {
 
 //监视js
 gulp.task("jsWatch", function () {
-    gulp.watch(["script/**/*.js", "!script/dep/**/**"], ["jsUglify"]);
+    gulp.watch("script/**/**", ["jsUglify"]);
 });
 gulp.task("babelWatch", function () {
-    gulp.watch(["script/*.js", "!script/dep/**/**"], ["jsBabel"]);
+    gulp.watch("script/**/**", ["jsBabel"]);
 });
 
 //监视less

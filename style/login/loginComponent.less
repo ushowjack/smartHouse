@@ -1,0 +1,73 @@
+/**
+ * Created with Less.
+ * User: Ushow Jack/youshoujie@tomee.cn
+ * Date: 2017/4/12
+ * Time: 9:41
+ */
+@import "../variable";
+@import "../mixins/opacity";
+
+.login-component {
+  .login-head {
+    position: relative;
+    width: 100%;
+    height: 55px;
+    color: #fff;
+    background: #353b49;
+    & > span {
+      font-size: @h1-tittle-text;
+      line-height: @h1-tittle-text;
+      font-family: @body-font-family;
+      position: absolute;
+      top: 50%;
+      margin-top: -@h1-tittle-text / 2;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  form {
+
+    height: 85%;
+    width: 100%;
+    text-align: center;
+    .items-list {
+      margin-top: 10%;
+      display: inline-block;
+      width: 80%;
+    }
+    .input-item {
+      position: relative;
+      border: solid 1px #ccc;
+      border-bottom: none;
+      width: 100%;
+      height: 40px;
+      background: no-repeat 0 center;
+      &:nth-last-child(1) {
+        border-bottom: solid 1px #ccc;
+      }
+      & > input {
+        border: none;
+        display: inline-block;
+        width: ~'calc(100% - 2px)';
+        height: ~'calc(100% - 2px)';
+        border: none;
+        background:none;
+        font-size: @input-font-size;
+        text-indent: 50px;
+      }
+    }
+    #login {
+      display: inline-block;
+      margin-top: 20%;
+      width: 80%;
+      height: 40px;
+      border: none;
+      &:hover {
+        background: @btn-color-hover;
+        span {
+          .opacity(0.7);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+/**
+ * Created with ES6.
+ * User: Ushow Jack/youshoujie@tomee.cn
+ * Date: 2017/4/12
+ * Time: 17:48
+ */
+"use strict"
+window.onload = function () {
+
+    let placeholderFn = function (elemName, css = {
+        "color": "rgb(204, 204, 204)",
+        "line-height": "40px",
+        "font-size": "14px",
+        "display": "inline",
+        "position": "absolute",
+        "top": 0,
+        "left": 50,
+        "z-index": 2
+    }) {
+        let inputItem = $(elemName);
+        inputItem.each(function (index, element) {
+            let placeholder = $(element).find("input").attr("placeholder");
+            let txt = $(`<txt>${placeholder}</txt>`);
+            txt.css(css);
+            $(element).append(txt);
+            $(element).find("input").focus(function () {
+                txt.text("");
+            });
+            $(element).find("input").blur(function () {
+                //alert(this.value);
+                if (!this.value) {
+                    txt.text(placeholder);
+                }
+            });
+        });
+    }
+    placeholderFn(".input-item");
+
+}

@@ -4,6 +4,24 @@
  * Time: 16:04
  */
 "use strict"
+/**
+ * 处理forEach兼容性问题
+ * @param callBack
+ * @param context
+ */
+Array.prototype.forEach = function forEach(callBack, context) {
+    typeof context === "undefined" ? context = window : null;
+
+    if ("forEach" in Array.prototype) {
+        this.forEach(callBack, context);
+        return;
+    }
+
+    //->不兼容处理
+    for (var i = 0; i < this.length; i++) {
+        typeof callBack === "function" ? callBack.call(context, this[i], i, this) : null;
+    }
+};
 
 /**
  *  * 来源：JavaScript高级程序设计，由Ushow改写
@@ -69,5 +87,29 @@ let CookieUtil = {
      */
     unset: function ({name, path, domain, secure}) {
         this.set({name: name, value: "", path: path, domain: domain, secure: secure});
+    }
+}
+
+/**
+ * 表单方法集合
+ * @type {{placeholderOff: FormUtil.placeholderOff, placeholderOn: FormUtil.placeholderOn}}
+ */
+let FormUtil = {
+    /**
+     * 用于绑定input的placeholder事件
+     * @example inputElem.forEach(FormUtil.setPlaceholder)
+     * @param el {DOM对象}
+     * @version 1.0
+     */
+    placeholderOff: function (ev) {
+        ev.target.val = ev.target.getAttribute("placeholder");
+        ev.target.setAttribute("placeholder","");
+    },
+    placeholderOn: function (ev) {
+        ev.target.setAttribute("placeholder",ev.target.val );
+    },
+    setPlaceholder: function (el) {
+        el.onfocus = FormUtil.placeholderOff;
+        el.onblur = FormUtil.placeholderOn;
     }
 }
