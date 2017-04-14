@@ -1,2 +1,2 @@
-"use strict";window.onload=function(){!function(t){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{color:"rgb(204, 204, 204)","line-height":"40px","font-size":"14px",display:"inline",position:"absolute",top:0,left:50,"z-index":2};$(t).each(function(t,i){var o=$(i).find("input").attr("placeholder"),e=$("<txt>"+o+"</txt>");e.css(n),$(i).append(e),$(i).find("input").focus(function(){e.text("")}),$(i).find("input").blur(function(){this.value||e.text(o)})})}(".input-item")};
+"use strict";window.onload=function(){FormUtil.placeholderPolyfill(".input-item")};
 //# sourceMappingURL=ie9.js.map

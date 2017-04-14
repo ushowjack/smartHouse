@@ -1,0 +1,41 @@
+/**
+ * Created with Less.
+ * User: Ushow Jack/youshoujie@tomee.cn
+ * Date: 2017/4/13
+ * Time: 15:00
+ */
+@import "../variable";
+@import "../mixins/opacity";
+@import "../myMixins/reset-ul";
+
+.side-bar {
+  width: 20%;
+  min-width: 300px;
+  height: 5000px;
+  position: fixed;
+  top: @header-height;
+  background: #353b49;
+  ul {
+    .reset-ul();
+    li {
+      width: 100%;
+    }
+    a {
+      display: block;
+      width: ~"calc(100% - @{side-bar-padding})";
+      height: 60px;
+      line-height: 60px;
+      padding-left: @side-bar-padding;
+      color: #ffffff;
+      font-size: 18px;
+      box-shadow: 0 2px 2px #222;
+      .opacity(0.8);
+      &:hover,
+      &:focus {
+        background: lighten(#353b49, 20%);
+        .opacity(1);
+      }
+    }
+  }
+
+}

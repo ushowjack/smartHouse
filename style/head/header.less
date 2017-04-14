@@ -1,0 +1,50 @@
+/**
+ * Created with Less.
+ * User: Ushow Jack/youshoujie@tomee.cn
+ * Date: 2017/4/13
+ * Time: 14:57
+ */
+@import "../variable";
+@import "../mixins/opacity";
+@import "../myMixins/absolute";
+@import "../myMixins/reset-ul";
+
+header {
+  width: 100%;
+  height: @header-height;
+  position: relative;
+  background: @header-bg;
+  background: #64b4fd@ie8;
+  img{
+    display: block;
+  }
+  img:nth-child(1) {
+    width: 302px;
+    height: 16px;
+    .absolute(52px, 36px);
+  }
+  img:nth-child(2) {
+    width: 464px;
+    height: 45px;
+    .absolute(54px, 72px);
+  }
+  ul {
+    .absolute(20px, 94px, right, top);
+    .reset-ul();
+    li {
+      border-left: 2px solid #ffffff;
+      display: inline-block;
+      width: 100px;
+      &:nth-child(1) {
+        border-left: none;
+      }
+    }
+    a {
+      width: 100%;
+      display: block;
+      font-family: @body-font-family;
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+}

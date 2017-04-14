@@ -21,7 +21,7 @@ var gulp = require("gulp"),
 //jsBabel 只是对JavaScript文件进行编译，最后导出看编译的效果，没有实际意义
 //方便学习和查编译是够存在问题时使用
 gulp.task("jsBabel", function () {
-    return gulp.src(["script/**/*.js", "!script/dep/**/*"],{ base: "script" })
+    return gulp.src(["script/**/*.js", "!script/dep/**/*"], {base: "script"})
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(babel({
@@ -34,7 +34,7 @@ gulp.task("jsBabel", function () {
 //jsUglify 对JavaScript文件进行编译，并且压缩文件，在此避免压缩依赖压缩文件
 //是项目最终需要引入的文件。
 gulp.task("jsUglify", function () {
-    return gulp.src(["script/**/*.js", "!script/dep/**/*"],{ base: "script" })
+    return gulp.src(["script/**/*.js", "!script/dep/**/*"], {base: "script"})
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(babel({
@@ -48,13 +48,13 @@ gulp.task("jsUglify", function () {
 });
 
 gulp.task("jsminLoad", function () {
-    return gulp.src("script/dep/*",{ base: "script" })
+    return gulp.src("script/dep/*", {base: "script"})
         .pipe(gulp.dest("dist/script/"));
 });
 
 //打包less文件
 gulp.task("lessMin", function () {
-    return gulp.src(["style/*.less","style/**/*.less","!style/mixins/*.less"],{ base: 'style' })
+    return gulp.src(["style/*.less", "style/**/*.less", "!style/mixins/*.less"], {base: 'style'})
         .pipe(plumber())
         .pipe(less())
         .pipe(autoprefixer({
@@ -68,7 +68,7 @@ gulp.task("lessMin", function () {
 //打包css文件
 
 gulp.task("cssMin", function () {
-    return gulp.src(["style/*.{less,css}","style/**/*.{less,css}","!style/mixins/*.less"],{ base: 'style' })
+    return gulp.src(["style/*.{less,css}", "style/**/*.{less,css}", "!style/mixins/*.less"], {base: 'style'})
         .pipe(plumber())
         .pipe(less())
         .pipe(sourcemaps.init())
@@ -93,11 +93,11 @@ gulp.task("babelWatch", function () {
 
 //监视less
 gulp.task("lessWatch", function () {
-    gulp.watch(["style/*.{less,css}","style/**/*.{less,css}","!style/mixins/*.less"], ["lessMin"]);
+    gulp.watch(["style/*.{less,css}", "style/**/*.{less,css}", "!style/mixins/*.less"], ["lessMin"]);
 });
 //监视css
 gulp.task("cssWatch", function () {
-    gulp.watch(["style/*.{less,css}","style/**/*.{less,css}","!style/mixins/*.less"], ["cssMin"]);
+    gulp.watch(["style/*.{less,css}", "style/**/*.{less,css}", "!style/mixins/*.less"], ["cssMin"]);
 });
 
 
@@ -120,4 +120,4 @@ gulp.task("testImagemin", function () {
 
 gulp.task("build", ["jsUglify", "jsBabel", "jsminLoad", "cssMin", "lessMin"]);
 gulp.task("deepBuild", ["jsUglify", "jsBabel", "jsminLoad", "cssMin", "lessMin", "testImagemin"]);
-gulp.task("watch", ["jsWatch", "cssWatch", "babelWatch","lessWatch"]);
+gulp.task("watch", ["jsWatch", "cssWatch", "babelWatch", "lessWatch"]);

@@ -9,6 +9,8 @@
   "author": "ushow jack",
   "license": "ISC",
   "devDependencies": {
+    "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-es2015": "^6.24.0",
     "bootstrap": "^3.3.7",
     "gulp": "^3.9.1",

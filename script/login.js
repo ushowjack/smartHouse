@@ -5,7 +5,8 @@
  * Time: 10:15
  */
 "use strict"
-let inputElem = document.querySelectorAll("input");
-inputElem.forEach(FormUtil.setPlaceholder);
 
+//由于myForEach不是原生的遍历器，要把类数组转成数组
+let inputElem = document.querySelectorAll("input");
+Array.prototype.myForEach.apply(FormUtil.setPlaceholder,inputElem);
 

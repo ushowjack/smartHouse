@@ -1,0 +1,2 @@
+.side-bar{width:20%;min-width:300px;height:5000px;position:fixed;top:153px;background:#353b49}.side-bar ul{list-style:none;padding:0;margin:0}.side-bar ul a{text-decoration:none}.side-bar ul li{width:100%}.side-bar ul a{display:block;width:calc(100% - 40px);height:60px;line-height:60px;padding-left:40px;color:#fff;font-size:18px;box-shadow:0 2px 2px #222;opacity:.8;filter:alpha(opacity=80)}.side-bar ul a:focus,.side-bar ul a:hover{background:#606b84;opacity:1;filter:alpha(opacity=100)}
+/*# sourceMappingURL=leftSideComponent.css.map */

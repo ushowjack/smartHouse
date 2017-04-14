@@ -9,10 +9,10 @@
  * @param callBack
  * @param context
  */
-Array.prototype.forEach = function forEach(callBack, context) {
+Array.prototype.myForEach = function myForEach(callBack, context) {
     typeof context === "undefined" ? context = window : null;
 
-    if ("forEach" in Array.prototype) {
+    if (Array.prototype.forEach === "Function") {
         this.forEach(callBack, context);
         return;
     }
@@ -22,6 +22,42 @@ Array.prototype.forEach = function forEach(callBack, context) {
         typeof callBack === "function" ? callBack.call(context, this[i], i, this) : null;
     }
 };
+
+
+/**
+ * 获取当前时间方法
+ *
+ * @returns {string}
+ * @constructor
+ */
+function GetDate() {
+    let now =  new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let day = now.getDate();
+    let hours = now.getHours();
+    let min = now.getMinutes();
+    let sec = now.getSeconds();
+    let time = `${year}-${month}-${day} ${hours}:${min}:${sec}`;
+    return time;
+}
+/**
+ * 增加时间戳，解决浏览器缓存
+ * @param url [string]
+ * @returns {url}
+ */
+function Timestamp(url) {
+
+    let getTimestamp = GetDate();
+
+    if (url.indexOf("?") > -1) {
+        url = `${url}&timestamp=${getTimestamp}`;
+    } else {
+        url = `${url}?timestamp=${getTimestamp}`;
+    }
+    return encodeURI(url);
+}
+
 
 /**
  *  * 来源：JavaScript高级程序设计，由Ushow改写
@@ -92,7 +128,7 @@ let CookieUtil = {
 
 /**
  * 表单方法集合
- * @type {{placeholderOff: FormUtil.placeholderOff, placeholderOn: FormUtil.placeholderOn}}
+ * @type {{placeholderOff: FormUtil.placeholderOff, placeholderOn: FormUtil.placeholderOn, setPlaceholder: FormUtil.setPlaceholder, placeholderPolyfill: FormUtil.placeholderPolyfill}}
  */
 let FormUtil = {
     /**
@@ -103,13 +139,52 @@ let FormUtil = {
      */
     placeholderOff: function (ev) {
         ev.target.val = ev.target.getAttribute("placeholder");
-        ev.target.setAttribute("placeholder","");
+        ev.target.setAttribute("placeholder", "");
     },
     placeholderOn: function (ev) {
-        ev.target.setAttribute("placeholder",ev.target.val );
+        ev.target.setAttribute("placeholder", ev.target.val);
     },
     setPlaceholder: function (el) {
         el.onfocus = FormUtil.placeholderOff;
         el.onblur = FormUtil.placeholderOn;
+    },
+    /**
+     * 解决IE9不能使用placeholder的问题，输入想使用placeholder的选择器
+     * 设置对应input的标签的placeholder的值即可
+     * @depend  jQuery
+     * @example placeholderFn(".input-item");
+     * @param elemName
+     * @param css
+     */
+    placeholderPolyfill: function (elemName, css = {
+        "color": "rgb(204, 204, 204)",
+        "line-height": "40px",
+        "font-size": "14px",
+        "position": "absolute",
+        "display": "inline",
+        "top": 0,
+        "left": 50,
+        "z-index": 2
+    }) {
+        let inputItem = $(elemName);
+        inputItem.each(function (index, element) {
+            let placeholder = $(element).find("input").attr("placeholder");
+            let txt = $(`<txt>${placeholder}</txt>`);
+            txt.css(css);
+            $(element).append(txt);
+            $(element).find("input").focus(function () {
+                txt.text("");
+            });
+            $(element).find("input").blur(function () {
+
+                if (!this.value) {
+                    txt.text(placeholder);
+                }
+            });
+        });
     }
 }
+
+
+
+

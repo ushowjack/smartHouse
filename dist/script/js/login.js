@@ -6,6 +6,8 @@
  */
 "use strict";
 
+//由于myForEach不是原生的遍历器，要把类数组转成数组
+
 var inputElem = document.querySelectorAll("input");
-inputElem.forEach(FormUtil.setPlaceholder);
+Array.prototype.myForEach.apply(FormUtil.setPlaceholder, inputElem);
 //# sourceMappingURL=login.js.map

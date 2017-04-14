@@ -1,0 +1,63 @@
+/**
+ * Created with Less.
+ * User: Ushow Jack/youshoujie@tomee.cn
+ * Date: 2017/4/13
+ * Time: 14:57
+ */
+/**
+ * Created with Less.
+ * User: Ushow Jack/youshoujie@tomee.cn
+ * Date: 2017/4/13
+ * Time: 15:35
+ */
+header {
+  width: 100%;
+  height: 153px;
+  position: relative;
+  background: -webkit-linear-gradient(left, #429cfe, #64b4fd);
+  background: linear-gradient(90deg, #429cfe, #64b4fd);
+  background: #64b4fd \9;
+}
+header img {
+  display: block;
+}
+header img:nth-child(1) {
+  width: 302px;
+  height: 16px;
+  position: absolute;
+  top: 36px;
+  left: 52px;
+}
+header img:nth-child(2) {
+  width: 464px;
+  height: 45px;
+  position: absolute;
+  top: 72px;
+  left: 54px;
+}
+header ul {
+  position: absolute;
+  top: 94px;
+  right: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+header ul a {
+  text-decoration: none;
+}
+header ul li {
+  border-left: 2px solid #ffffff;
+  display: inline-block;
+  width: 100px;
+}
+header ul li:nth-child(1) {
+  border-left: none;
+}
+header ul a {
+  width: 100%;
+  display: block;
+  font-family: "Helvetica Neue,Helvetica, Arial, sans-serif";
+  color: #ffffff;
+  text-align: center;
+}

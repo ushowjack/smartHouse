@@ -51,9 +51,23 @@
   font-size: 14px;
   text-indent: 50px;
 }
+.login-component form .forget {
+  width: 80%;
+  margin: 8px auto;
+  text-align: right;
+}
+.login-component form .forget a {
+  font-size: 13px;
+  text-decoration: none;
+  color: #64b4fd;
+}
+.login-component form .forget a:hover {
+  text-decoration: underline;
+  color: #329cfc;
+}
 .login-component form #login {
   display: inline-block;
-  margin-top: 20%;
+  margin-top: 5%;
   width: 80%;
   height: 40px;
   border: none;
