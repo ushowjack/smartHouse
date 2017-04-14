@@ -197,4 +197,43 @@ var FormUtil = {
         });
     }
 };
+
+/**
+ * 给指定单一元素添加类名的开关
+ * @param el
+ * @param className
+ */
+function switchClassFn(el, className) {
+    var classNameAll = el.className;
+    var nameIndex = classNameAll.indexOf(" " + className);
+    if (nameIndex > -1) {
+        classNameAll = classNameAll.replace(" " + className, "");
+    } else {
+        classNameAll += " " + className;
+    }
+    return el.className = classNameAll;
+}
+
+/**
+ * 清除类名
+ * @param el
+ * @param className
+ */
+function removeClass(el, className) {
+    if (el.classList) {
+        el.classList.remove(className);
+    } else {
+        el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+    }
+}
+//function multswitchClassFn(elems, className) {
+//    let Arr = Array.prototype.slice.call(elems);
+//    if (Arr.length > 0) {
+//        Arr.myForEach(function (el) {
+//            switchClassFn(el, className);
+//        });
+//    }else {
+//        switchClassFn(elems, className);
+//    }
+//}
 //# sourceMappingURL=common.js.map

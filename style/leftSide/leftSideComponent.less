@@ -5,9 +5,10 @@
  * Time: 15:00
  */
 @import "../variable";
-@import "../mixins/opacity";
+@import "../myMixins/opacity";
 @import "../myMixins/reset-ul";
 
+//侧边栏主框架
 .side-bar {
   width: 20%;
   min-width: 300px;
@@ -15,27 +16,59 @@
   position: fixed;
   top: @header-height;
   background: #353b49;
-  ul {
-    .reset-ul();
-    li {
-      width: 100%;
-    }
-    a {
+}
+
+//主菜单样式
+.mainmenu {
+  .reset-ul();
+  .mainlist {
+    width: 100%;
+    & > a {
       display: block;
       width: ~"calc(100% - @{side-bar-padding})";
-      height: 60px;
-      line-height: 60px;
-      padding-left: @side-bar-padding;
+      height: @mainmenu-item-height;
+      line-height: @mainmenu-item-height;
+      padding-left: @mainmenu-item-height;
       color: #ffffff;
       font-size: 18px;
-      box-shadow: 0 2px 2px #222;
       .opacity(0.8);
-      &:hover,
-      &:focus {
-        background: lighten(#353b49, 20%);
+      transition: 0.6s;
+      &:hover{
+        background: lighten(#353b49, 10%);
+      }
+      &.active {
+        background: lighten(#353b49, 30%);
+        font-size: 20px;
+        height: @mainmenu-item-height + 4px;
+        line-height: @mainmenu-item-height + 4px;
         .opacity(1);
       }
     }
   }
-
+}
+//子菜单样式
+.submenu {
+  .reset-ul();
+  .sublist {
+    width: 100%;
+    & > a {
+      display: block;
+      width: ~"calc(100% - @{side-bar-padding})";
+      height: @mainmenu-item-height;
+      line-height: @mainmenu-item-height;
+      padding-left: @mainmenu-item-height;
+      color: #ffffff;
+      font-size: 18px;
+      .opacity(0.8);
+      transition: 0.6s all;
+      background: darken(#353b49, 10%);
+      &:hover{
+        background: lighten(#353b49, 5%);
+      }
+      &.active {
+        background: lighten(#353b49, 10%);
+        .opacity(1);
+      }
+    }
+  }
 }

@@ -197,6 +197,15 @@ body {
 /**
  * Created with Less.
  * User: Ushow Jack/youshoujie@tomee.cn
+ * Date: 2017/4/14
+ * Time: 10:28
+ */
+.hidden {
+  display: none;
+}
+/**
+ * Created with Less.
+ * User: Ushow Jack/youshoujie@tomee.cn
  * Date: 2017/4/13
  * Time: 14:57
  */
@@ -271,32 +280,71 @@ header ul a {
   top: 153px;
   background: #353b49;
 }
-.side-bar ul {
+.mainmenu {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.side-bar ul a {
+.mainmenu a {
   text-decoration: none;
 }
-.side-bar ul li {
+.mainmenu .mainlist {
   width: 100%;
 }
-.side-bar ul a {
+.mainmenu .mainlist > a {
   display: block;
-  width: calc(100% - 40px);
+  width: calc(100% - 60px);
   height: 60px;
   line-height: 60px;
-  padding-left: 40px;
+  padding-left: 60px;
   color: #ffffff;
   font-size: 18px;
-  box-shadow: 0 2px 2px #222;
   opacity: 0.8;
   filter: alpha(opacity=80);
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
 }
-.side-bar ul a:hover,
-.side-bar ul a:focus {
-  background: #606b84;
+.mainmenu .mainlist > a:hover {
+  background: #4a5367;
+}
+.mainmenu .mainlist > a.active {
+  background: #79849e;
+  font-size: 20px;
+  height: 64px;
+  line-height: 64px;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.submenu a {
+  text-decoration: none;
+}
+.submenu .sublist {
+  width: 100%;
+}
+.submenu .sublist > a {
+  display: block;
+  width: calc(100% - 60px);
+  height: 60px;
+  line-height: 60px;
+  padding-left: 60px;
+  color: #ffffff;
+  font-size: 18px;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  -webkit-transition: 0.6s all;
+  transition: 0.6s all;
+  background: #20232b;
+}
+.submenu .sublist > a:hover {
+  background: #404758;
+}
+.submenu .sublist > a.active {
+  background: #4a5367;
   opacity: 1;
   filter: alpha(opacity=100);
 }
