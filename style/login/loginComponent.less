@@ -46,28 +46,54 @@
         border-bottom: solid 1px #ccc;
       }
       & > input {
-        border: none;
         display: inline-block;
         width: ~'calc(100% - 2px)';
         height: ~'calc(100% - 2px)';
         border: none;
-        background:none;
+        background: none;
         font-size: @input-font-size;
         text-indent: 50px;
+        &[name="captcha"] {
+          width: ~"calc(100% - 96px)";
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+      & > img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: block;
+        width: @captchaIMG-width;
+        height: @captchaIMG-height;
+        min-width: @captchaIMG-width;
       }
     }
-    .forget{
+    .forget {
       width: 80%;
       margin: 8px auto;
       text-align: right;
-      a{
+      a {
         font-size: 13px;
         text-decoration: none;
         color: #64b4fd;
-        &:hover{
+        &:hover {
           text-decoration: underline;
           color: @btn-color-hover;
         }
+      }
+      span {
+        float: left;
+        font-size: 13px;
+        font-weight: 500;
+        &.warn {
+          color: @color-warn;
+        }
+        &.success{
+          color: @color-success;
+        }
+
       }
     }
     #login {

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>指挥营房</title>
+    <title>智慧营房</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width" initial-scale="1.0"/>
@@ -19,10 +19,11 @@
 
     <!--登录页面引入样式-->
     <link rel="stylesheet" href="../dist/style/login.css">
+    <script>
+        var URL = "__URL__";
+    </script>
 </head>
-
 <body>
-
 <div class="container">
     <!--图片-->
     <img src="../image/loginPg.png">
@@ -37,13 +38,17 @@
                     <input type="text" name="userName" placeholder="用户名"/>
                 </div>
                 <div class="input-item">
-                    <input type="text" name="password" placeholder="密码"/>
+                    <input type="password" name="password" placeholder="密码"/>
                 </div>
                 <div class="input-item">
                     <input type="text" name="captcha" placeholder="验证码"/>
+                    <img src="__URL__/verify" alt="captcha" id="captchaIMG">
                 </div>
             </div>
-            <div class="forget"><a href="#">忘记密码</a></div>
+            <div class="forget">
+                <span class=""></span>
+                <a href="#">忘记密码</a>
+            </div>
             <button type="button" name="login" id="login">
                 <span>登&nbsp;&nbsp;&nbsp;&nbsp;录</span>
             </button>

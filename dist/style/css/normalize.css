@@ -176,3 +176,24 @@ td,
 th {
   padding: 0;
 }
+input,
+button,
+select,
+textarea {
+  outline: none;
+}
+textarea {
+  resize: none;
+}
+:-ms-input-placeholder {
+  color: #c0c0c0;
+}
+::-webkit-input-placeholder {
+  color: #c0c0c0;
+}
+:-moz-placeholder {
+  color: #c0c0c0;
+}
+::-moz-placeholder {
+  color: #c0c0c0;
+}

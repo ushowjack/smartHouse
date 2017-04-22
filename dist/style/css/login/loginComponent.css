@@ -51,6 +51,21 @@
   font-size: 14px;
   text-indent: 50px;
 }
+.login-component form .input-item > input[name="captcha"] {
+  width: calc(100% - 96px);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.login-component form .input-item > img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 96px;
+  height: 40px;
+  min-width: 96px;
+}
 .login-component form .forget {
   width: 80%;
   margin: 8px auto;
@@ -64,6 +79,17 @@
 .login-component form .forget a:hover {
   text-decoration: underline;
   color: #329cfc;
+}
+.login-component form .forget span {
+  float: left;
+  font-size: 13px;
+  font-weight: 500;
+}
+.login-component form .forget span.warn {
+  color: red;
+}
+.login-component form .forget span.success {
+  color: #4fc08d;
 }
 .login-component form #login {
   display: inline-block;

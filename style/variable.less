@@ -8,6 +8,8 @@
 @ie7: ~"*";
 @ie8: ~"\9";
 @h1-tittle-text: 16px;
+@color-warn: red;
+@color-success: #4fc08d;
 
 //nav变量设置
 @nav-number: 5;
@@ -31,6 +33,10 @@
 @btn-color-hover: darken(@btn-color-base, 10%); //透明度可以设置为1
 @btn-color-focus: lighten(@btn-color-base, 10%);
 
+@captchaIMG-ratio: 120 / 50;
+@captchaIMG-width: @captchaIMG-ratio * 40px;
+@captchaIMG-height: 40px;
+
 //智慧营房系统
 @header-height: 153px;
 @header-bg: linear-gradient(90deg, #429cfe, #64b4fd);
@@ -38,3 +44,22 @@
 @side-bar-padding: 60px;
 
 @mainmenu-item-height: 60px;
+
+//table
+@line-height-base: 30px;
+@line-height-computed: 10px;
+@body-bg: #fff;
+@table-cell-padding: 8px;
+//** Padding for cells in `.table-condensed`.
+@table-condensed-cell-padding: 5px;
+
+//** Default background color used for all tables.
+@table-bg: transparent;
+//** Background color used for `.table-striped`.
+@table-bg-accent: #f9f9f9;
+//** Background color used for `.table-hover`.
+@table-bg-hover: #f5f5f5;
+@table-bg-active: @table-bg-hover;
+
+//** Border color for table and cell borders.
+@table-border-color: #ddd;

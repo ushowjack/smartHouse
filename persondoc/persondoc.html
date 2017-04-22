@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>深圳淘米智慧营房系统</title>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
+    <meta name="keywords" content="淘米科技，智慧营区，科技"/>
+    <meta name="description" content="深圳淘米智慧营房系统后台管理界面"/>
     <meta name="viewport" content="width=device-width" initial-scale="1.0"/>
     <link rel="shortcut icon" href="img/favicon.ico"/>
     <link rel="apple-touch-icon" href="img/touchicon.png"/>
@@ -13,10 +13,11 @@
     <script src="../dist/script/dep/jquery-3.1.1.min.js"></script>
     <script src="../dist/script/dep/html5shiv.min.js"></script>
     <script src="../dist/script/common.js"></script>
-    <!--[if IE 9]>
-    <script src="../dist/script/ie9.js"></script>
-    <![endif]-->
+    <script src="../dist/script/dep/vue.js"></script>
 
+    <!--[if IE 9]-->
+    <script src="../dist/script/ie9.js"></script>
+    <!--[endif]-->
     <!--登录页面引入样式-->
     <link rel="stylesheet" href="../dist/style/persondoc.css">
 </head>
@@ -31,24 +32,21 @@
             <li><a href="../login/login.html">退出</a></li>
         </ul>
     </header>
-    <div class="side-bar">
-        <ul class="mainmenu">
-            <li class="mainlist">
-                <a href="#隔壁老王">隔壁老王</a>
-                <ul class="submenu">
-                    <li class="sublist"><a href="#">隔壁小游</a></li>
-                    <li class="sublist"><a href="#">隔壁小游</a></li>
-                    <li class="sublist"><a href="#">隔壁小游</a></li>
-                </ul>
-            </li>
-        </ul>
-        <ul class="mainmenu">
-            <li class="mainlist"><a href="#隔壁老游">隔壁老游</a></li>
-        </ul>
+    <div class="context">
+        <div class="side-bar"></div>
+        <div class="side-context">
+            <div class="table-response">
+                <table class="table"></table>
+            </div>
+        </div>
     </div>
-
 </div>
 
+<script src="../dist/script/components/sidebarComponent.js"></script>
+<script src="../dist/script/components/tableComponent.js"></script>
 <script src="../dist/script/persondoc.js"></script>
+
 </body>
 </html>
+
+

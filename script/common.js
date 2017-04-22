@@ -5,28 +5,94 @@
  */
 "use strict"
 /**
- * 处理forEach兼容性问题
- * @param callBack
- * @param context
+ * 处理Array.prototype兼容ie6~ie8问题
  */
-Array.prototype.myForEach = function myForEach(callBack, context) {
-    typeof context === "undefined" ? context = window : null;
+if (typeof Array.prototype.forEach !== "function") {
+    Array.prototype.forEach = function (fn, context) {
+        for (let k = 0, length = this.length; k < length; k++) {
+            if (typeof fn === "function" && Object.prototype.hasOwnProperty.call(this, k)) {
+                fn.call(context, this[k], k, this);
+            }
+        }
+    };
+}
 
-    if (Array.prototype.forEach === "Function") {
-        this.forEach(callBack, context);
-        return;
-    }
+if (typeof Array.prototype.map !== "function") {
+    Array.prototype.map = function (fn, context) {
+        let arr = [];
+        if (typeof fn === "function") {
+            for (let k = 0, length = this.length; k < length; k++) {
+                arr.push(fn.call(context, this[k], k, this));
+            }
+        }
+        return arr;
+    };
+}
 
-    //->不兼容处理
-    for (var i = 0; i < this.length; i++) {
-        typeof callBack === "function" ? callBack.call(context, this[i], i, this) : null;
+if (typeof Array.prototype.filter !== "function") {
+    Array.prototype.filter = function (fn, context) {
+        let arr = [];
+        if (typeof fn === "function") {
+            for (let k = 0, length = this.length; k < length; k++) {
+                fn.call(context, this[k], k, this) && arr.push(this[k]);
+            }
+        }
+        return arr;
+    };
+}
+
+if (typeof Array.prototype.some !== "function") {
+    Array.prototype.some = function (fn, context) {
+        let passed = false;
+        if (typeof fn === "function") {
+            for (let k = 0, length = this.length; k < length; k++) {
+                if (passed === true) break;
+                passed = !!fn.call(context, this[k], k, this);
+            }
+        }
+        return passed;
+    };
+}
+
+if (typeof Array.prototype.every !== "function") {
+    Array.prototype.every = function (fn, context) {
+        let passed = true;
+        if (typeof fn === "function") {
+            for (let k = 0, length = this.length; k < length; k++) {
+                if (passed === false) break;
+                passed = !!fn.call(context, this[k], k, this);
+            }
+        }
+        return passed;
+    };
+}
+if (typeof Array.prototype.reduce !== "function") {
+    Array.prototype.reduce = function (callback, initialValue) {
+        let previous = initialValue, k = 0, length = this.length;
+        if (typeof initialValue === "undefined") {
+            previous = this[0];
+            k = 1;
+        }
+
+        if (typeof callback === "function") {
+            for (k; k < length; k++) {
+                this.hasOwnProperty(k) && (previous = callback(previous, this[k], k, this));
+            }
+        }
+        return previous;
+    };
+}
+
+if (typeof Array.from !== "function") {
+    Array.from = function (arrayLike) {
+        let Arr = Array.prototype.slice.call(arrayLike);
+        return Arr;
     }
-};
+}
 
 
 /**
  * 获取当前时间方法
- *
  * @returns {string}
  * @constructor
  */
@@ -46,10 +112,16 @@ function GetDate() {
  * @param url [string]
  * @returns {url}
  */
+/**
+ * version: 1.1  ushow jack
+ *  to resolve the url add new timestamp but not delete the old timestamp
+ */
 function Timestamp(url) {
 
     let getTimestamp = GetDate();
-
+    if (url.indexOf("timestamp") > -1) {
+        url = url.substring(0, url.indexOf("timestamp") - 1);
+    }
     if (url.indexOf("?") > -1) {
         url = `${url}&timestamp=${getTimestamp}`;
     } else {
@@ -215,13 +287,70 @@ function removeClass(el, className) {
     }
 
 }
-//function multswitchClassFn(elems, className) {
-//    let Arr = Array.prototype.slice.call(elems);
-//    if (Arr.length > 0) {
-//        Arr.myForEach(function (el) {
-//            switchClassFn(el, className);
-//        });
-//    }else {
-//        switchClassFn(elems, className);
-//    }
-//}
+
+//todo 写一个事件委托的函数
+//let DOM = {
+//    eventDepute,
+//};
+
+/**
+ * * 兼容到IE7
+ * @type {{createXHR: (()), addURLParam: ((url, name?, value?))}}
+ */
+let AJAXFn = {
+    createXHR(){
+        if (typeof XMLHttpRequest !== "undefined") {
+            return new XMLHttpRequest();
+        } else if (typeof ActiveXObject !== "undefined") {
+            if (typeof createXHR.activeXString !== "undefined") {
+                let versions = [
+                        'Msxml2.XMLHTTP.5.0',
+                        'Msxml2.XMLHTTP.4.0',
+                        'Msxml2.XMLHTTP.3.0',
+                        'Msxml2.XMLHTTP',
+                        'Microsoft.XMLHTTP'],
+                    i,
+                    len;
+                for (i = 0, len = versions.length; i < len; i++) {
+                    try {
+                        new ActiveXObject(versions[i]);
+                        createXHR.activeXString = versions[i];
+                        break;
+                    } catch (ex) {
+                        //    跳过
+                    }
+                }
+            }
+            return new ActiveXObject(createXHR.activeXString);
+        } else {
+            throw new Error("你的浏览器版本太旧，请及时更新！")
+        }
+
+    },
+    addURLParam(url, name, value){
+        url += (url.indexOf("?") == -1 ? "?" : "&");
+        url += `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+        return url;
+    }
+}
+
+let serialize = {
+    serializeInput(elArr){
+        let len = elArr.length,
+            msg = [],
+            i;
+        for (i = 0; i < len; i++) {
+            msg.push(`${encodeURIComponent(elArr[i].name)}=${encodeURIComponent(elArr[i].value)}`);
+        }
+        return msg.join("&");
+    },
+    checkForm(){
+        let msg = document.querySelector(".forget>span");
+        if (msg.className === "warn"){
+            return false;
+        }
+        return true;
+    }
+}
+
+

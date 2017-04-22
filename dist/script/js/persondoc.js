@@ -6,23 +6,28 @@
  */
 "use strict";
 
-var mainMenu = document.querySelectorAll(".mainlist>a");
-var submain = document.querySelectorAll(".submenu");
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-Array.prototype.slice.call(submain).myForEach(function (el) {
-    switchClassFn(el, "hidden");
-});
-var control = [];
+var mainMenu = [].concat(_toConsumableArray(document.querySelectorAll(".mainlist>a")));
 
-Array.prototype.slice.call(mainMenu).myForEach(function (el, index) {
-    //设置开关
-    console.log(control);
-    control[index] = true;
-    el.onclick = function () {
+//Array.prototype.slice.call(mainMenu)
+mainMenu.forEach(function (el, index) {
+    el.onclick = function sideBarControl() {
+        //返回开关状态,if opening return true,if close return false
+        var control = function () {
+            var opening = void 0;
+            if ($(el).next().length) {
+                opening = $(el).next()[0].className.indexOf("show") > -1;
+            }
+            return opening;
+        }();
         //清除所有active
-        Array.prototype.slice.call(document.querySelectorAll(".mainlist>a")).myForEach(function (el) {
+        Array.prototype.slice.call(document.querySelectorAll(".mainlist>a")).forEach(function (el) {
             removeClass(el, "active");
         });
+        //remove active className from all of <a>
+        //$(sublistLink).removeClass("active");
+
         //添加active类
         switchClassFn(el, "active");
 
@@ -31,18 +36,27 @@ Array.prototype.slice.call(mainMenu).myForEach(function (el, index) {
 
         //为了判断是否有子菜单防止报错
         var selfUl = $(el).next().length;
+
         //点击修改显示状态
         if (selfUl > 0) {
-            if (control[index]) {
+            if (!control) {
                 $(el).next().removeClass("hidden").addClass("show");
-                console.log(control[index]);
-                control[index] = !control[index];
             } else {
                 $(el).next().addClass("hidden").removeClass("show");
-                console.log(control[index]);
-                control[index] = !control[index];
             }
         }
+    };
+});
+
+//when the sublist was active ,then set the submenu's className active（这么蹩脚的英文就是我自己写的）
+
+var sublistLink = document.querySelectorAll(".sublist > a");
+Array.prototype.slice.call(sublistLink).forEach(function (el) {
+    el.onclick = function () {
+        //remove active className from all of <a>
+        $(sublistLink).removeClass("active");
+
+        $(this).addClass("active");
     };
 });
 //# sourceMappingURL=persondoc.js.map
