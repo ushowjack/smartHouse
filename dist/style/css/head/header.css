@@ -14,7 +14,6 @@ header {
   width: 100%;
   height: 153px;
   position: relative;
-  background: -webkit-linear-gradient(left, #429cfe, #64b4fd);
   background: linear-gradient(90deg, #429cfe, #64b4fd);
   background: #64b4fd \9;
 }

@@ -320,7 +320,6 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background-image: -webkit-linear-gradient(left, #429cfe, #64b4fd);
   background-image: linear-gradient(90deg, #429cfe, #64b4fd);
   background: #469ffe \9;
 }

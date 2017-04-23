@@ -40,7 +40,6 @@
   font-size: 18px;
   opacity: 0.8;
   filter: alpha(opacity=80);
-  -webkit-transition: 0.6s all;
   transition: 0.6s all;
 }
 .mainmenu .mainlist > a:hover {
@@ -82,7 +81,6 @@
   font-size: 18px;
   opacity: 0.8;
   filter: alpha(opacity=80);
-  -webkit-transition: 0.3s all;
   transition: 0.3s all;
   background: #20232b;
 }
