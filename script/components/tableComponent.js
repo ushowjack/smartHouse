@@ -21,6 +21,7 @@ let table = [
     ["gfawt","fewfgw","gwgw"],
     ["gfawt","fewfgw","gwgw"],
 ];
+
 const tableComponent = new Vue({
     el: '.table',
     template: `

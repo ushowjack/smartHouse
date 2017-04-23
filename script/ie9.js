@@ -5,6 +5,7 @@
  * Time: 17:48
  */
 "use strict"
+
 window.onload = function () {
     FormUtil.placeholderPolyfill (".input-item");
-}
+};
